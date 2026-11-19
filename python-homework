@@ -1,0 +1,30 @@
+cat > week_03/344_reverse_string.py << 'EOF'
+"""
+LeetCode 344. Reverse String
+https://leetcode.com/problems/reverse-string/
+
+მიდგომა: Two pointers (in-place)
+დრო: O(n) | მეხსიერება: O(1)
+"""
+
+
+class Solution:
+    def reverseString(self, s: list[str]) -> None:
+        """Do not return anything, modify s in-place instead."""
+        left, right = 0, len(s) - 1
+        while left < right:
+            s[left], s[right] = s[right], s[left]
+            left += 1
+            right -= 1
+
+
+if __name__ == "__main__":
+    tests = [
+        (["h", "e", "l", "l", "o"], ["o", "l", "l", "e", "h"]),
+        (["H", "a", "n", "n", "a", "h"], ["h", "a", "n", "n", "a", "H"]),
+        (["a"], ["a"]),
+    ]
+    for s, expected in tests:
+        Solution().reverseString(s)
+        print(s, "✅" if s == expected else "❌")
+EOF
